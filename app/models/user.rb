@@ -1,30 +1,26 @@
 require "openssl"
 
 class User < ApplicationRecord
-  REGEX_FOR_USERNAME = /\W+/
-
+  USERNAME_VALID = /\A\W+\z/
   # пар-ры для работы шифр.
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
 
   attr_accessor :password
 
+  before_validation :username_downcasing!, :email_downcasing!
+  before_save :encrypt_password
+
   has_many :questions
 
   validates :email, :username, presence: true, uniqueness: true
-  validates :username, length: { maximum: 40 }, format: { with: REGEX_FOR_USERNAME }
+  validates :username, length: { maximum: 40 }, format: { with: USERNAME_VALID }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   # validates_presence_of :password, on: :create
   validates :password, presence: true, confirmation: true, on: :create
   # доп.поле потв-ние пароля
   # validates_confirmation_of :password
   #validates :password, confirmation: trconfirmation: trueue
-
-
-  before_validation :username_downcasing!, :email_downcasing!
-
-  before_save :encrypt_password
-
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
