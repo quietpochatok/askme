@@ -1,6 +1,7 @@
 require "openssl"
 
 class User < ApplicationRecord
+  regular_expression_for_mail = URI::MailTo::EMAIL_REGEXP
   # пар-ры для работы шифр.
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
@@ -9,6 +10,11 @@ class User < ApplicationRecord
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
+  validates :username, length: { maximum: 40 }
+  validates :username, format: { with: /\A[a-zA-Z0-9\_]+\z/,
+    message: "only letters/digit with '_'" }
+  validates :email, format: { with: regular_expression_for_mail,
+    message: "sorry uncorrect email" }
 
   attr_accessor :password
 
