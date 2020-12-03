@@ -1,36 +1,35 @@
 require "openssl"
 
 class User < ApplicationRecord
-  regular_expression_for_mail = URI::MailTo::EMAIL_REGEXP
-
+  REGEX_FOR_USERNAME = /\W+/
   # пар-ры для работы шифр.
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
+
+  attr_accessor :password
 
   has_many :questions
 
   validates :email, :username, presence: true, uniqueness: true
   validates :username, length: { maximum: 40 }
-  validates :username, format: { with: /\A[a-zA-Z0-9\_]+\z/,
-    message: "only letters/digit with '_'" }
-  validates :email, format: { with: regular_expression_for_mail,
-    message: "sorry uncorrect email" }
+  validates :username, format: { with: REGEX_FOR_USERNAME }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
 
   before_validation :username_downcasing!
 
-  def username_downcasing!
-    username.downcase!
-  end
-
-  attr_accessor :password
-
-  # validates :password, presence: true
-  validates_presence_of :password, on: :create
+  validates :password, presence: true, on: :create
+  # validates_presence_of :password, on: :create
   # доп.поле потв-ние пароля
   validates_confirmation_of :password
 
   before_save :encrypt_password
+
+  private
+
+  def username_downcasing!
+    username.downcase!
+  end
 
   def encrypt_password
     if password.present?
