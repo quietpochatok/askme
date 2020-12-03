@@ -21,8 +21,6 @@ Bundler.require(*Rails.groups)
 
 module Askme
   class Application < Rails::Application
-     initializer(:remove_activestorage_routes, after: :add_routing_paths) {|app|
-      app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}}
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
@@ -33,5 +31,7 @@ module Askme
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+     initializer(:remove_activestorage_routes, after: :add_routing_paths) {|app|
+      app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}}
   end
 end
