@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Greetings!
+This tutorial is a clone of ask.me (not yet complete).
 
-Things you may want to cover:
+To use, download / clone this repositories and be sure to go to the directory where the program is located.
+Run in the console: 
+```
+bundle && bundle exec rake db: migrate 
+```
 
-* Ruby version
 
-* System dependencies
+Приветствую!
+Это учебная программа, является клоном сайта ask.me( на данный момент не завершена).
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Для того воспользоваться, скачайте/склонируйте репозиторий и обязательно перейдите в каталог, где находится программа.
+Выполните в консоле:
+```
+bundle && bundle exec rake db: migrate 
+```
