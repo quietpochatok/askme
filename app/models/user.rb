@@ -1,20 +1,21 @@
 require "openssl"
+require 'byebug'
 
 class User < ApplicationRecord
-  USERNAME_VALID = /\A\W+\z/
+  USERNAME_VALID = /\W/
   # пар-ры для работы шифр.
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
 
   attr_accessor :password
 
+  has_many :questions
+
   before_validation :username_downcasing!, :email_downcasing!
   before_save :encrypt_password
 
-  has_many :questions
-
+  validates :username, length: { maximum: 40 }, format: { without: /\W/ }
   validates :email, :username, presence: true, uniqueness: true
-  validates :username, length: { maximum: 40 }, format: { with: USERNAME_VALID }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   # validates_presence_of :password, on: :create
   validates :password, presence: true, confirmation: true, on: :create
@@ -55,7 +56,7 @@ class User < ApplicationRecord
   end
 
   def email_downcasing!
-    email.downcase! if email.present?
+    email.downcase! if username.present?
   end
 
   def encrypt_password
