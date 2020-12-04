@@ -52,11 +52,11 @@ class User < ApplicationRecord
   private
 
   def username_downcasing!
-    username.downcase! if username.present?
+    username&.downcase!
   end
 
   def email_downcasing!
-    email.downcase! if username.present?
+    email&.downcase!
   end
 
   def encrypt_password
