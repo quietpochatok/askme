@@ -12,6 +12,18 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
   end
 
+  def update
+    @user = User.find params[:id]
+
+    if @user.update(user_params)
+      redirect_to user_path, notice: 'Изменения сохранены'
+    else
+      # Если не удалось по какой-то причине сохранить пользователя, то используем метод render (не redirect!),
+      # который заново рисует шаблон, и название шаблона
+      render 'edit'
+    end
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -32,7 +44,9 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation,
-                               :name, :username, :avatar_url)
+    params.require(:user).permit(
+      :email, :password, :password_confirmation,
+      :name, :username, :avatar_url
+    )
   end
 end

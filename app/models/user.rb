@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true, on: :create
   # доп.поле потв-ние пароля
   # validates_confirmation_of :password
-  #validates :password, confirmation: trconfirmation: trueue
+  # validates :password, confirmation: trconfirmation: trueue
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
