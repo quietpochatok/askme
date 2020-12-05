@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Хорошие вопросы</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
-  </head>
-
-  <body>
- <div class="header">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Хорошие вопросы</title>
+  <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="header">
   <div class="container">
     <div class="header-logo">
       <h1 class="header-title"><%= link_to "Хорошие вопросы", root_path %></h1>
     </div>
+
+    <%# Выводим в хэдере информацию для логина/авторизации/регистрации %>
+<!--  -->
   </div>
 </div>
 
-  <div class="content">
-    <div class="container">
-      <%= yield %>
-    </div>
-    <%# Вместо волшебной конструкции yield рельсы подставят то, что срендерит %>
-    <%# шаблон для нужной нам страницы, например, users/show %>
+<div class="content">
+  <div class="container">
+    <%# Выводим сообщение об ошибке или уведомление для пользователя. %>
+    <%# Если в объеккте flash есть что-то, выводим содержимое на страницу, %>
+    <%# если нет, игнорируем этот блок. %>
+    <% if flash.any? %>
+      <div class="content-wrapper buffer-both">
+        <% flash.each do |name, message| %>
+          <%= content_tag :div, message, class: "flash-#{name}" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= yield %>
   </div>
-  </body>
+</div>
+</body>
 </html>

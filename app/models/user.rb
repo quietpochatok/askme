@@ -56,7 +56,8 @@ class User < ApplicationRecord
   end
 
   def email_downcasing!
-    email&.present?
+    email if email.present?
+    #email&.downcase!
   end
 
   def encrypt_password

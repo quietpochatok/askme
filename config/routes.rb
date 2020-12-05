@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
-  resources :users
+  root 'users#index'
+
+  # Ресурс пользователей (экшен destroy не поддерживается)
+  resources :users, except: [:destroy]
   resources :questions
-  # get 'users/index'
-  # get 'users/new'
-  # get 'users/edit'
-  # get 'users/show'
-  get 'show' => 'users#show'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
