@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to root_path, notice: 'Пользователь зарегистрирован'
     else
     # Если не удалось по какой-то причине сохранить пользователя, то используем метод render (не redirect!),
