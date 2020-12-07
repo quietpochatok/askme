@@ -42,7 +42,11 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:text, :user_id, :answer)
+      if current_user.present? && params[:question][:user_id].to_i == current_user.id
+        params.require(:question).permit(:text, :user_id, :answer)
+      else
+        params.require(:question).permit(:text, :user_id)
+      end
     end
 
     def authorize_user
