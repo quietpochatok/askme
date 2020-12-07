@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
 
   def create
     # return uniq object-user from DB
-    @user = User.authenticate(params[:email], params[:password])
+    user = User.authenticate(params[:email], params[:password])
 
-    if @user.present?
-      session[:user_id] = @user.id
+    if user.present?
+      session[:user_id] = user.id
       redirect_to root_path, notice: 'Вы успешно залогинились'
     else
       flash.now.alert = "Неправильный пароль бро"

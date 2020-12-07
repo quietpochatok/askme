@@ -6,11 +6,9 @@ ruby '2.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use sqlite3 as the database for Active Record
-# Этот гем нужен для сборки js-скриптов на heroku
-#gem 'uglifier'
 
 gem 'jquery-rails'
-# Use Puma as the app server
+# # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
@@ -32,7 +30,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :production do
-  gem 'pg', '~> 0.21'
+  gem 'pg'
 end
 
 group :development, :test do
