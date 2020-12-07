@@ -7,7 +7,7 @@ ruby '2.7.0'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use sqlite3 as the database for Active Record
 # Этот гем нужен для сборки js-скриптов на heroku
-gem 'uglifier'
+#gem 'uglifier'
 
 gem 'jquery-rails'
 # Use Puma as the app server
@@ -38,11 +38,11 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'sqlite3', '>= 1.4.2'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'sqlite3', '>= 1.4.2'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
