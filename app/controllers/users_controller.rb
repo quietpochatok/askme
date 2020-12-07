@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     else
     # Если не удалось по какой-то причине сохранить пользователя, то используем метод render (не redirect!),
     # который заново рисует шаблон, и название шаблона
-      render 'new'
+      render :new
     end
   end
 
