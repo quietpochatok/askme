@@ -7,7 +7,7 @@ ruby '2.7.0'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use sqlite3 as the database for Active Record
 # Этот гем нужен для сборки js-скриптов на heroku
-gem 'uglifier'
+#gem 'uglifier'
 
 gem 'jquery-rails'
 # Use Puma as the app server
