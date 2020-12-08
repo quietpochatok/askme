@@ -19,6 +19,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   # validates_presence_of :password, on: :create
   validates :password, presence: true, confirmation: true, on: :create
+  validates :profile_color,format: {with: /\A#[a-z0-9]{,6}\z/}
   # доп.поле потв-ние пароля
   # validates_confirmation_of :password
   # validates :password, confirmation: trconfirmation: trueue
