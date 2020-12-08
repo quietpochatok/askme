@@ -12,9 +12,9 @@
 //
 // https://github.com/rails/sprockets#sprockets-directives
 //
-= require jquery3
-= require jquery_ujs
-= require_tree .
+// = require jquery3
+// = require jquery_ujs
+// = require_tree .
 
 // Этот код добавляет обработчик события выдвигания формы при клике на кнопку
 // «Задать вопрос», которая видна только, когда страница открыта в маленьком

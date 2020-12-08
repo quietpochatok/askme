@@ -30,15 +30,8 @@ module Askme
     # the framework and any gems in your application.
 
     # Don't generate system test files.
-    # config.generators.system_tests = nil
-    #  initializer(:remove_activestorage_routes, after: :add_routing_paths) {|app|
-    #   app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}}
-
-    config.time_zone = 'Moscow'
-
-    config.i18n.default_locale = :en
-    config.i18n.locale = :ru
-
-    config.i18n.fallbacks = [:en]
+    config.generators.system_tests = nil
+     initializer(:remove_activestorage_routes, after: :add_routing_paths) {|app|
+      app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}}
   end
 end
