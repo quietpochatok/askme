@@ -9,7 +9,8 @@ class User < ApplicationRecord
 
   attr_accessor :password
 
-  has_many :questions
+  # чтобы удалить юзера обязательно нужен тут dependent: :destroy, иначе никак
+  has_many :questions, dependent: :destroy
 
   before_validation :username_downcasing!, :email_downcasing!
   before_save :encrypt_password
@@ -19,7 +20,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   # validates_presence_of :password, on: :create
   validates :password, presence: true, confirmation: true, on: :create
-  validates :profile_color,format: {with: /\A#[a-z0-9]{,6}\z/}
+  validates :profile_color, format: {with: /\A#[a-z0-9]{,6}\z/}, presence: true
   # доп.поле потв-ние пароля
   # validates_confirmation_of :password
   # validates :password, confirmation: trconfirmation: trueue

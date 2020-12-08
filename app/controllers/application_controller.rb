@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     end
 
     def reject_user
-        redirect_to root_path, alert: 'Вам сюда низя! Ухадите!'
+      redirect_to root_path, alert: 'Вам сюда низя! Ухадите!'
     end
 end
     #   helper_method :current_user, :logged_in?
