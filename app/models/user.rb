@@ -23,7 +23,7 @@ class User < ApplicationRecord
   validates :profile_color, format: {with: /\A#[a-z0-9]{,6}\z/}, presence: true
   # доп.поле потв-ние пароля
   # validates_confirmation_of :password
-  # validates :password, confirmation: trconfirmation: trueue
+  # validates :password, confirmation: trconfirmation: true
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
