@@ -3,6 +3,7 @@
     <div class="question-text text-lead">
       <%= question.text %>
     </div>
+    <span><%#= link_to "#{User.find_by(id: question.user_id).username}" %></span>
 
     <% if question.answer.present? %>
       <div class="question-answer text-lead">
