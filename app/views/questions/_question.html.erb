@@ -1,10 +1,17 @@
+<% questions ||= nil %>
+<% edit_icon = question.answer.blank? ? 'reply' : 'pencil' %>
 <div class="question">
   <div class="question-content">
     <div class="question-text text-lead">
       <%= question.text %>
     </div>
-    <span><%#= link_to "#{User.find_by(id: question.user_id).username}" %></span>
 
+    <span>
+      <% if question.author_id.present? %>
+        <%= link_to "Автор: #{question.author.username}", user_path(question.author) %>
+      <% end %>
+    </span>
+    
     <% if question.answer.present? %>
       <div class="question-answer text-lead">
         <%= question.answer %>
@@ -16,8 +23,6 @@
     </div>
   </div>
 
-<% questions ||= nil %>
-<% edit_icon = question.answer.blank? ? 'reply' : 'pencil' %>
 
   <% if question.user == current_user %>
     <div class="question-actions">
