@@ -1,5 +1,5 @@
 require "openssl"
-require 'byebug'
+#require 'byebug'
 
 class User < ApplicationRecord
   USERNAME_VALID = /\W/

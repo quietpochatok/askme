@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_154417) do
+ActiveRecord::Schema.define(version: 2020_12_08_193522) do
 
   create_table "questions", force: :cascade do |t|
     t.string "text"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2020_12_08_154417) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
+    t.integer "author_id"
+    t.index ["author_id"], name: "index_questions_on_author_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
@@ -30,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_154417) do
     t.string "password_hash"
     t.string "password_salt"
     t.string "avatar_url"
-    t.string "profile_color", default: "fc0fc0"
+    t.string "profile_color", default: "#fc0fc0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
