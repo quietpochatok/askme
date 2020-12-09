@@ -1,5 +1,8 @@
 class QuestionsController < ApplicationController
-  before_action :find_question, only: [ :show, :edit, :update, :destroy]
+  # before_action/before_filtr значит, что указанный в нём метод нужно вызвать перед любым из экшенов ниже.
+  # Нам не нужен метод find_question перед create и new, что мы и указали с помощью параметра only.
+  # Инициализируем объект вопрос для экшенов :edit, :update, :destroy
+  before_action :find_question, only: [:edit, :update, :destroy]
 
   before_action :authorize_user, except: [:create]
 
