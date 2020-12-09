@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #before_action :find_user, except: [:index, :new, :create]
+  before_action :find_user, except: [:index, :new, :create]
 
   # Проверяем, имеет ли юзер доступ к экшену, делаем это для всех действий, кроме
   # :index, :new, :create, :show — к ним есть доступ у всех, даже у анонимных юзеров.
