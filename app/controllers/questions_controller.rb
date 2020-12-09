@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :find_question, only: [ :edit, :update, :destroy]
+  before_action :find_question, only: [ :show, :edit, :update, :destroy]
 
   before_action :authorize_user, except: [:create]
 
