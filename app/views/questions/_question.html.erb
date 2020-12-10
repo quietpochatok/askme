@@ -7,9 +7,9 @@
     </div>
 
     <span>
-      <% if question.author_id.present? %>
-        <%= link_to "Автор: #{question.author.username}", user_path(question.author) %>
-      <% end %>
+      <% if question.author.present? %>
+       <%= link_to "Автор: #{question.author.username}", user_path(question.author) %>
+      <% end %> 
     </span>
     
     <% if question.answer.present? %>
