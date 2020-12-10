@@ -31,7 +31,7 @@
 
       <div class="form-field">
         <%= f.label :profile_color, class: 'form-label' %>
-        <%= f.color_field :profile_color, class: 'form-text-field' %>
+        <%= f.color_field :profile_color, class: 'hide' %>
       </div>
 
       <div class="buffer-top-large buffer-bottom">
@@ -51,10 +51,10 @@
       <div class="form-action buffer-top">
         <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
       </div>      
-
     <% end %>
+
     <div class="form-action buffer-top">
-        <%= link_to 'Удалить аккаунт', @user, method: :delete, data: { confirm: "Really?" } %>
+      <%= link_to 'Удалить аккаунт', @user, method: :delete, data: { confirm: "Really?" } %>
     </div>
   </div>
 </div>
