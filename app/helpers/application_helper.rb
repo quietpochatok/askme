@@ -1,12 +1,7 @@
 module ApplicationHelper
   def user_avatar(user)
-    if user.avatar_url.present?
-      user.avatar_url
-    else
-      asset_pack_path 'media/images/avatar.jpg'
-    end
+    user.avatar_url.presence || asset_pack_path('media/images/avatar.jpg')
   end
-
 
   def inclination(count_question)
     first_word_form, second_word_form, third_word_form = "вопрос", "вопроса", "вопросов"
