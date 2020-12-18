@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Ресурс пользователей (экшен destroy не поддерживается)
   resources :users
   resources :questions, only: %i[edit update destroy create]
-  resource :session, only: %i[new create destroy]
 
+  resource :session, only: %i[new create destroy]
 end
 
