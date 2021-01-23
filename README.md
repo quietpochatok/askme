@@ -1,13 +1,3 @@
-# README
-
-Приветствую!
-
-
-Для того воспользоваться, скачайте/склонируйте репозиторий и обязательно перейдите в каталог, где находится программа.
-Выполните в консоле:
-```
-bundle ; bundle exec rake db:migrate ; bundle exec rake db:seed
-```
 # Веб-приложение "Хорошие вопросы"
 Это учебная программа, является клоном сайта ask.me. 
 ## Описание
@@ -20,6 +10,9 @@ bundle ; bundle exec rake db:migrate ; bundle exec rake db:seed
 ruby version 2.7
 
 rails version 6.0.3
+
+webpacker version '~> 4.0'
+
 
 ## Запуск приложения на локалхосте
 
