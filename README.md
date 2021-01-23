@@ -1,19 +1,62 @@
 # README
 
-Greetings!
-This tutorial is a clone of ask.me (not yet complete).
-For to use, download / clone this repositories and be sure to go to the directory where the program is located.
-Run in the console: 
-```
-bundle && bundle exec rake db: migrate 
-```
-
-
 Приветствую!
-Это учебная программа, является клоном сайта ask.me( на данный момент не завершена).
+
 
 Для того воспользоваться, скачайте/склонируйте репозиторий и обязательно перейдите в каталог, где находится программа.
 Выполните в консоле:
 ```
-bundle && bundle exec rake db: migrate 
+bundle ; bundle exec rake db:migrate ; bundle exec rake db:seed
 ```
+# Веб-приложение "Хорошие вопросы"
+Это учебная программа, является клоном сайта ask.me. 
+## Описание
+В приложении реализовано возможность задавать вопросы зарегистрированным пользователям. На странице пользователя можно смотреть какие вопросы были заданы, ответы на них. 
+
+Версия приложения на [heroku](https://hidden-taiga-30194.herokuapp.com).
+
+
+## Основные характеристики приложения:
+ruby version 2.7
+
+rails version 6.0.3
+
+## Запуск приложения на локалхосте
+
+1. Необходимо скачать либо клонировать репозиторий с игрой
+
+   ```https://github.com/quietpochatok/askme```
+
+2. В репозитории отстуствуют файлы `config/master.key`. 
+   >Их нужно создать, без них приложение не будет функционировать.
+
+3. Перейти в терминале в папку с файлами программы и выполнить
+
+   ```bundle && bundle exec rake db:migrate```
+
+   затем
+
+   ```yarn```
+4. Зарегистрироваться на [reCAPTCHA](https://www.google.com/recaptcha/about/) и зарегистрировать URL приложения, где он развернут.
+
+   4.1 Прописать в переменных окружения — локально и на Хероку.
+       
+      Локально забивается в nano ~/.bash_profile
+       
+       export RECAPTCHA_ASKME_PUBLIC_KEY="<тут публичный ключ>"
+       export RECAPTCHA_ASKME_PRIVATE_KEY="<тут приватный ключ>"
+       
+      На Хероку в разделе `Settings → Reveal Config Vars` и точно также добавляем переменные с теми же названиями и ключами.
+       
+5. Запуск приложения в локалхост осуществляется в терминале
+   
+   3.1 запуск сервера rails
+   
+   ```bundle exec rails s```
+  
+   3.2 запуск сервера webpacker для сборки стилей, скриптов и т.д.
+   
+   ```bin/webpack-dev-server```
+
+
+Автор: Хасанов Дамир ([quietpochatok](https://github.com/quietpochatok)).
