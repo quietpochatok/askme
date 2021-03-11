@@ -40,6 +40,7 @@ group :development, :test do
   #gem 'pry-rails'
   gem 'sqlite3', '>= 1.4.2'
   gem 'byebug'
+  gem 'ffaker'
 end
 
 group :development do
