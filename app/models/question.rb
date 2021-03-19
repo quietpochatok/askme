@@ -12,12 +12,13 @@ class Question < ApplicationRecord
 
   # commit каждый раз при удачной транзакции
   # поэтому мы пишем on: %i[create, update] указывая что при экшенах create, update
-  after_save_commit :create_hashtag, on: %i[create update]
+  # after_commit :create_hashtag, on: %i[create update]
+  after_save_commit :create_hashtag
 
   private
 
   def create_hashtag
     Question.hashtags = "#{text} #{answer}".downcase.scan(Hashtag::HASHTAG_REGEXP).uniq.
-    map { |{ht}| Hashtag.find_or_create_by(text: ht.delete('#')) }
+      map { |ht| Hashtag.find_or_create_by(text: ht.delete('#')) }
   end
 end
