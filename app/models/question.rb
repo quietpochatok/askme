@@ -3,7 +3,7 @@ class Question < ApplicationRecord
   belongs_to :author, class_name: "User", optional: true
 
   has_many :hashtag_questions, dependent: :destroy
-  has_many :hashtags, through: :hashtag_question
+  has_many :hashtags, through: :hashtag_questions
 
   # belongs_to :user дает валидацию на присутствие юзера ниже., поэтмоу
   # поле юзера не нужно валидировать
@@ -18,7 +18,7 @@ class Question < ApplicationRecord
   private
 
   def create_hashtag
-    Question.hashtags = "#{text} #{answer}".downcase.scan(Hashtag::HASHTAG_REGEXP).uniq.
+    self.hashtags = "#{text} #{answer}".downcase.scan(Hashtag::HASHTAG_REGEXP).uniq.
       map { |ht| Hashtag.find_or_create_by(text: ht.delete('#')) }
   end
 end
