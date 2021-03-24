@@ -10,4 +10,14 @@
       </div>
     </div>
   <% end %>
+
+  <div class="buffer-both">
+    <h2 class="title-medium">хэштеги</h2>
+    <% @hashtags.each do |ht| %>
+      <div class="users-list-item">
+          <%= link_to "##{ht.text}", hashtag_path(ht.text) %>
+        </div>
+    <% end %>    
+  </div>  
 </div>
+
