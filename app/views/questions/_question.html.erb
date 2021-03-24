@@ -1,7 +1,7 @@
 <div class="question">
   <div class="question-content">
     <div class="question-text text-lead">
-      <%= question.text %>
+      <%= link_hashtag_in_question(question.text) %>
     </div>
 
     <span>
@@ -12,7 +12,7 @@
     
     <% if question.answer.present? %>
       <div class="question-answer text-lead">
-        <%= question.answer %>
+        <%= link_hashtag_in_question(question.text) %>
       </div>
     <% end %>
 
