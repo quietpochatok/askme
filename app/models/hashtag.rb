@@ -5,5 +5,5 @@ class Hashtag < ApplicationRecord
   has_many :questions, through: :hashtag_questions
   validates :text, presence: true, uniqueness: true
 
-  scope :with_questions, -> { joins(:questions) }
+  scope :with_questions, -> { joins(:questions).distinct }
 end
